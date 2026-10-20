@@ -1,0 +1,12 @@
+URL: http://127.0.0.1:5500/index1.html
+codigo: 200
+Protocolo:HTTP
+host: 127.0.0.1
+puerto:5500
+Ruta:index1.html
+Metodo:GET
+
+404 not fount: significa que no se encontro lo que le estamos solicitando
+HTML:Lenguaje que permite crear la estructura de una pagina web
+CSS: es el lenguaje que se utuiliza para darle estilo 
+JAVASCRIPT: es un lenguaje de programacion que permite agregar interactividad a la pagina
