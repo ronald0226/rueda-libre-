@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pagina de reservas">
+    <title>Reservas</title>
+</head>
+<body>
+<header>
+<h1>Rueda Libre</h1>
+<nav aria-label="Navegación principal">
+<a href="../index1.html">Inicio</a>
+<a href="tarifas.html">Tarifas</a>
+<a href="../reservas.html" aria-current="page">Reservas</a>
+<link rel="stylesheet" href="../css/styles.css">
+</nav>
+</header>
+
+<main>
+<section class="card">
+<h2>Reserva tu bicicleta</h2>
+<p>Completa el formulario y prepárate para tu próxima aventura.</p>
+<p>Elige el tipo de bicicleta, la fecha y el tiempo de alquiler.</p>
+</section>
+
+<section>
+<h2>Datos de la reserva</h2>
+
+<form id="formulario-reserva">
+<label for="nombre">Nombre completo</label>
+<input type="text" id="nombre" name="nombre" required>
+
+<label for="correo">Correo electrónico</label>
+<input type="email" id="correo" name="correo" required>
+
+<label for="bicicleta">Tipo de bicicleta</label>
+<select id="bicicleta" name="bicicleta" required>
+<option value="">Selecciona una bicicleta</option>
+<option value="Montaña">Bicicleta de montaña</option>
+<option value="Urbana">Bicicleta urbana</option>
+<option value="Ruta">Bicicleta de ruta</option>
+<option value="Eléctrica">Bicicleta eléctrica</option>
+</select>
+
+<label for="fecha">Fecha de reserva</label>
+<input type="date" id="fecha" name="fecha" required>
+
+<label for="hora">Hora de recogida</label>
+<select id="hora" name="hora" required>
+<option value="">Selecciona una hora</option>
+<option value="08:00">8:00 a. m.</option>
+<option value="09:00">9:00 a. m.</option>
+<option value="10:00">10:00 a. m.</option>
+<option value="11:00">11:00 a. m.</option>
+<option value="13:00">1:00 p. m.</option>
+<option value="14:00">2:00 p. m.</option>
+<option value="15:00">3:00 p. m.</option>
+<option value="16:00">4:00 p. m.</option>
+</select>
+
+<label for="duracion">Tiempo de alquiler</label>
+<select id="duracion" name="duracion" required>
+<option value="">Selecciona la duración</option>
+<option value="1 hora">1 hora</option>
+<option value="2 horas">2 horas</option>
+<option value="Medio día">Medio día</option>
+<option value="Día completo">Día completo</option>
+</select>
+
+<label for="comentarios">Comentarios adicionales</label>
+<textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+<button type="submit">Solicitar reserva</button>
+</form>
+
+<p id="mensaje" role="status" aria-live="polite"></p>
+</section>
+</main>
+
+<footer>
+<p>&copy; 2026 Rueda Libre. Muévete libre, pedalea feliz.</p>
+</footer>
+
+<script>
+const formulario = document.getElementById("formulario-reserva");
+const fecha = document.getElementById("fecha");
+const mensaje = document.getElementById("mensaje");
+
+const hoy = new Date();
+hoy.setMinutes(hoy.getMinutes() - hoy.getTimezoneOffset());
+fecha.min = hoy.toISOString().split("T")[0];
+
+formulario.addEventListener("submit", function(event) {
+event.preventDefault();
+
+const nombre = document.getElementById("nombre").value;
+const bicicleta = document.getElementById("bicicleta").value;
+const dia = fecha.value;
+const hora = document.getElementById("hora").value;
+const duracion = document.getElementById("duracion").value;
+
+mensaje.textContent = "¡Gracias, " + nombre +
+"! Tu solicitud para una bicicleta " + bicicleta +
+" el " + dia + " a las " + hora +
+" por " + duracion +
+" fue registrada en esta demostración. La disponibilidad debe confirmarse.";
+});
+</script>   
+</body>
+</html>

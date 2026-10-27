@@ -1,0 +1,174 @@
+/* ESTILOS GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+body {
+font-family: Arial, sans-serif;
+background-color: #f4f7f4;
+color: #26352b;
+line-height: 1.6;
+}
+
+header {
+background-color: #247447;
+color: white;
+padding: 20px 8%;
+}
+
+header h1 {
+font-size: 30px;
+}
+
+nav {
+margin-top: 10px;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+margin-right: 20px;
+font-weight: bold;
+}
+
+nav a:hover {
+color: #f4a340;
+}
+
+/* CONTENIDO PRINCIPAL */
+main {
+width: 85%;
+max-width: 1100px;
+margin: 40px auto;
+}
+
+h2 {
+color: #247447;
+margin-bottom: 15px;
+}
+
+p {
+margin-bottom: 15px;
+}
+
+/* TARJETAS */
+.card {
+background-color: white;
+padding: 25px;
+margin-bottom: 25px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* FORMULARIOS */
+form {
+background-color: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+label {
+display: block;
+margin-top: 15px;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input,
+select,
+textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #cbd5ce;
+border-radius: 6px;
+font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+outline: 2px solid #247447;
+border-color: #247447;
+}
+
+button {
+background-color: #247447;
+color: white;
+border: none;
+padding: 13px 22px;
+margin-top: 20px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 16px;
+font-weight: bold;
+}
+
+button:hover {
+background-color: #185333;
+}
+
+/* ENLACES Y MENSAJES */
+a {
+transition: color 0.2s ease;
+}
+
+#mensaje {
+margin-top: 20px;
+padding: 15px;
+border-radius: 8px;
+background-color: #e1f3e5;
+color: #185333;
+}
+
+/* PIE DE PÁGINA */
+footer {
+background-color: #247447;
+color: white;
+text-align: center;
+padding: 20px;
+margin-top: 40px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+th, td {
+border: 1px solid var(--border-color);
+padding: var(--spacing-md);
+text-align: left;
+}
+
+
+
+/* ADAPTACIÓN A CELULARES */
+@media (max-width: 600px) {
+header {
+padding: 20px;
+}
+
+header h1 {
+    font-size: 25px;
+}
+nav a {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+}
+main {
+    width: 92%;
+    margin: 25px auto;
+}
+.card,
+form {
+    padding: 18px;
+}
+
+}
+#formulario-reserva button {
+    grid-column: auto;  
+}
