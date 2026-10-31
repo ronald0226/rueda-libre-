@@ -1,12 +1,38 @@
-URL: http://127.0.0.1:5500/index1.html
-codigo: 200
-Protocolo:HTTP
-host: 127.0.0.1
-puerto:5500
-Ruta:index1.html
-Metodo:GET
+==================================================
+BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v0.1)
+==================================================
 
-404 not fount: significa que no se encontro lo que le estamos solicitando
-HTML:Lenguaje que permite crear la estructura de una pagina web
-CSS: es el lenguaje que se utuiliza para darle estilo 
-JAVASCRIPT: es un lenguaje de programacion que permite agregar interactividad a la pagina
+--- 1. ANÁLISIS DE LA PETICIÓN HTTP (DevTools - Network) ---
+Al cargar la página de inicio en entorno local mediante Live Server:
+- URL completa: http://127.0.0.1:5500/index.html
+- Protocolo: HTTP/1.1
+- Host: 127.0.0.1
+- Puerto: 5500
+- Ruta: /index.html
+- Método de la petición: GET
+- Código de estado: 200 OK (Significa que el servidor encontró y sirvió el recurso exitosamente).
+
+Prueba de ruta inexistente (/promociones.html):
+- Código de estado: 404 Not Found (Indica que el servidor no encontró el recurso solicitado en la ruta especificada).
+
+--- 2. ROLES DE LAS TECNOLOGÍAS WEB CON EJEMPLOS ---
+- HTML: Define la estructura semántica y el contenido de la página. Ejemplo: Los títulos (<h1>), párrafos (<p>) y tablas (<table>).
+- CSS: Encargado del diseño visual, formato, colores y adaptabilidad mediante Flexbox. Ejemplo: Alinear el encabezado con "display: flex" y "justify-content: space-between".
+- JavaScript: Aporta la interactividad y lógica de comportamiento en el cliente. Ejemplo: Validar los campos de un futuro formulario de reservas antes de enviarlo.
+
+--- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio v0.1) ---
+| Archivo de origen | Destino | Ruta escrita en el enlace (href) |
+|-------------------|---------|----------------------------------|
+| index.html | index.html | index.html |
+| index.html | paginas/tarifas.html | paginas/tarifas.html |
+| index.html | paginas/reservas.html | paginas/reservas.html |
+| paginas/tarifas.html | index.html | ../index.html |
+| paginas/tarifas.html | paginas/tarifas.html | tarifas.html |
+| paginas/tarifas.html | paginas/reservas.html | reservas.html |
+| paginas/reservas.html | index.html | ../index.html |
+| paginas/reservas.html | paginas/tarifas.html | tarifas.html |
+| paginas/reservas.html | paginas/reservas.html | reservas.html |
+
+--- 4. COMPROBACIÓN VISUAL Y RESPONSIVA (Semana 2 - Flexbox) ---
+- Encabezado: Organizado con Flexbox horizontalmente en pantallas grandes y adaptado con flex-wrap para evitar desbordamientos en pantallas pequeñas.
+- Pie de página: Distribuido en 3 bloques de fila mediante "flex-direction: row", garantizando una lectura limpia y ordenada.

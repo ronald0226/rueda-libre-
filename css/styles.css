@@ -1,174 +1,180 @@
-/* ESTILOS GENERALES */
-
+/* ==========================================
+   ESTILOS GENERALES Y RESET (Rueda Libre)
+   ========================================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-font-family: Arial, sans-serif;
-background-color: #f4f7f4;
-color: #26352b;
-line-height: 1.6;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f6f7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+ul, ol {
+  list-style-position: inside;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   1. ENCABEZADO Y MENÚ (Flexbox)
+   ========================================== */
 header {
-background-color: #247447;
-color: white;
-padding: 20px 8%;
+  display: flex;
+  justify-content: space-between; /* Nombre a un extremo, menú al otro */
+  align-items: center;            /* Centrados verticalmente entre sí */
+  padding: 1rem 2rem;
+  background-color: #2c3e50;
+  color: white;
 }
 
-header h1 {
-font-size: 30px;
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-nav {
-margin-top: 10px;
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;                    /* Separación uniforme sin márgenes viejos */
+  flex-wrap: wrap;                /* Permite que los enlaces bajen de línea si no caben */
+  list-style: none;
+  margin: 0;
 }
 
-nav a {
-color: white;
-text-decoration: none;
-margin-right: 20px;
-font-weight: bold;
+header nav ul li a {
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
-nav a:hover {
-color: #f4a340;
+header nav ul li a:hover {
+  background-color: #34495e;
+  text-decoration: none;
 }
 
-/* CONTENIDO PRINCIPAL */
+/* ==========================================
+   2. CONTENIDO PRINCIPAL
+   ========================================== */
 main {
-width: 85%;
-max-width: 1100px;
-margin: 40px auto;
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-h2 {
-color: #247447;
-margin-bottom: 15px;
+.seccion-contenido {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
 }
 
 p {
-margin-bottom: 15px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-/* TARJETAS */
-.card {
-background-color: white;
-padding: 25px;
-margin-bottom: 25px;
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-/* FORMULARIOS */
-form {
-background-color: white;
-padding: 25px;
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-label {
-display: block;
-margin-top: 15px;
-margin-bottom: 5px;
-font-weight: bold;
-}
-
-input,
-select,
-textarea {
-width: 100%;
-padding: 12px;
-border: 1px solid #cbd5ce;
-border-radius: 6px;
-font-size: 16px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-outline: 2px solid #247447;
-border-color: #247447;
-}
-
-button {
-background-color: #247447;
-color: white;
-border: none;
-padding: 13px 22px;
-margin-top: 20px;
-border-radius: 6px;
-cursor: pointer;
-font-size: 16px;
-font-weight: bold;
-}
-
-button:hover {
-background-color: #185333;
-}
-
-/* ENLACES Y MENSAJES */
-a {
-transition: color 0.2s ease;
-}
-
-#mensaje {
-margin-top: 20px;
-padding: 15px;
-border-radius: 8px;
-background-color: #e1f3e5;
-color: #185333;
-}
-
-/* PIE DE PÁGINA */
-footer {
-background-color: #247447;
-color: white;
-text-align: center;
-padding: 20px;
-margin-top: 40px;
-}
-
+/* ==========================================
+   3. TABLAS ACCESIBLES (Para Tarifas)
+   ========================================== */
 table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
+
+caption {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  color: #34495e;
+}
+
 th, td {
-border: 1px solid var(--border-color);
-padding: var(--spacing-md);
-text-align: left;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
 }
 
-
-
-/* ADAPTACIÓN A CELULARES */
-@media (max-width: 600px) {
-header {
-padding: 20px;
+th {
+  background-color: #2980b9;
+  color: white;
 }
 
-header h1 {
-    font-size: 25px;
-}
-nav a {
-    display: inline-block;
-    margin: 5px 10px 5px 0;
-}
-main {
-    width: 92%;
-    margin: 25px auto;
-}
-.card,
-form {
-    padding: 18px;
+/* Botones y elementos destacados */
+.btn-reservar {
+  display: inline-block;
+  background-color: #27ae60;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 
+.btn-reservar:hover {
+  background-color: #219653;
+  text-decoration: none;
 }
-#formulario-reserva button {
-    grid-column: auto;  
+
+/* ==========================================
+   4. PIE DE PÁGINA / FOOTER (Flexbox)
+   ========================================== */
+footer {
+  display: flex;
+  flex-direction: row;            /* Organiza los bloques en fila horizontal */
+  justify-content: space-between; /* Espaciado uniforme entre bloques */
+  align-items: flex-start;        /* Alineados por la parte superior */
+  background-color: #1a252f;
+  color: white;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+footer .footer-block {
+  flex: 1;
+  min-width: 200px;
+}
+
+footer h3 {
+  color: #1abc9c;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: #1abc9c;
 }
