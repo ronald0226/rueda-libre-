@@ -3,33 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reserva tu bicicleta o espacio en recorridos guiados en Rueda Libre.">
+    <meta name="description" content="Formulario de reserva de bicicletas y recorridos guiados en Rueda Libre.">
     <title>Reservas | Rueda Libre</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
         <div class="logo">Rueda Libre</div>
-        <nav>
+        <nav aria-label="Navegación principal">
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index1.html">Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas y rutas</a></li>
                 <li><a href="reservas.html">Reservas</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="seccion-contenido">
+    <main>
         <h1>Reserva tu bicicleta</h1>
-        <p>Para apartar tu equipo o un cupo en nuestros recorridos, comunícate directamente a través de nuestro correo electrónico: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
+        <p>Completa el siguiente formulario para apartar tu equipo o cupo en nuestros recorridos. Si lo prefieres, escríbenos a: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
         
-        <h2>Horario de atención</h2>
-        <dl>
-            <dt>Lunes a viernes</dt>
-            <dd>7:00 a. m. a 7:00 p. m.</dd>
-            <dt>Sábados, domingos y festivos</dt>
-            <dd>6:00 a. m. a 2:00 p. m.</dd>
-        </dl>
+        <aside class="seccion-contenido">
+            <h2>Horario de atención</h2>
+            <dl>
+                <dt>Lunes a viernes</dt>
+                <dd>7:00 a. m. a 7:00 p. m.</dd>
+                <dt>Sábados, domingos y festivos</dt>
+                <dd>6:00 a. m. a 2:00 p. m.</dd>
+            </dl>
+        </aside>
+
+        <section class="seccion-contenido">
+            <h2>Formulario de reserva</h2>
+            <form action="#" method="POST">
+                
+                <fieldset>
+                    <legend>Tus datos</legend>
+                    
+                    <div>
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" required minlength="3" placeholder="Ej. Juan Pérez">
+                    </div>
+
+                    <div>
+                        <label for="documento">Número de documento:</label>
+                        <input type="text" id="documento" name="documento" required pattern="[0-9]{6,10}" title="Debe contener solo números, entre 6 y 10 dígitos" placeholder="Ej. 12345678">
+                    </div>
+
+                    <div>
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo" required placeholder="correo@example.com">
+                    </div>
+
+                    <div>
+                        <label for="celular">Celular:</label>
+                        <input type="tel" id="celular" name="celular" required pattern="3[0-9]{9}" title="Debe tener 10 dígitos y empezar por 3" placeholder="3001234567">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tu alquiler</legend>
+
+                    <div>
+                        <label for="fecha">Fecha del alquiler:</label>
+                        <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
+                    </div>
+
+                    <div>
+                        <label>Tipo de bicicleta:</label>
+                        <label><input type="radio" name="tipo_bici" value="urbana" required> Urbana</label>
+                        <label><input type="radio" name="tipo_bici" value="montana"> Montaña</label>
+                        <label><input type="radio" name="tipo_bici" value="electrica"> Eléctrica</label>
+                    </div>
+
+                    <div>
+                        <label for="plan">Plan de alquiler:</label>
+                        <select id="plan" name="plan" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="1h">1 hora</option>
+                            <option value="medio_dia">Medio día (4 h)</option>
+                            <option value="dia_completo">Día completo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="cantidad">Cantidad de bicicletas (1 a 6):</label>
+                        <input type="number" id="cantidad" name="cantidad" required min="1" max="6" value="1">
+                    </div>
+
+                    <div>
+                        <label for="recorrido">Recorrido guiado:</label>
+                        <select id="recorrido" name="recorrido">
+                            <option value="ninguno">Ninguno</option>
+                            <option value="rio_parques">Río y Parques</option>
+                            <option value="sabores_barrio">Sabores de Barrio</option>
+                            <option value="las_palmas">Reto Las Palmas</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Confirmación</legend>
+
+                    <div>
+                        <label for="comentarios">Comentarios adicionales (máximo 300 caracteres):</label>
+                        <textarea id="comentarios" name="comentarios" maxlength="300" rows="4" placeholder="Alguna petición especial..."></textarea>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" name="politicas" required> Acepto las políticas de alquiler y seguridad *
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-reservar">Enviar reserva</button>
+            </form>
+        </section>
     </main>
 
     <footer>
@@ -42,7 +132,7 @@
             <p>Correo: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>
         </div>
         <div class="footer-block">
-            <h3>Horario</h3>
+            <h3>Horario y Derechos</h3>
             <p>&copy; 2026 Rueda Libre</p>
         </div>
     </footer>

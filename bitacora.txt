@@ -1,16 +1,16 @@
 ==================================================
-BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v0.1)
+BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v0.2)
 ==================================================
 
 --- 1. ANÁLISIS DE LA PETICIÓN HTTP (DevTools - Network) ---
 Al cargar la página de inicio en entorno local mediante Live Server:
-- URL completa: http://127.0.0.1:5500/index.html
+- URL completa: http://127.0.0.1:5500/index1.html
 - Protocolo: HTTP/1.1
 - Host: 127.0.0.1
 - Puerto: 5500
-- Ruta: /index.html
+- Ruta: /index1.html
 - Método de la petición: GET
-- Código de estado: 200 OK (Significa que el servidor encontró y sirvió el recurso exitosamente).
+- Código de estado: 200 OK (Indica que el servidor encontró y sirvió el recurso exitosamente).
 
 Prueba de ruta inexistente (/promociones.html):
 - Código de estado: 404 Not Found (Indica que el servidor no encontró el recurso solicitado en la ruta especificada).
@@ -18,21 +18,65 @@ Prueba de ruta inexistente (/promociones.html):
 --- 2. ROLES DE LAS TECNOLOGÍAS WEB CON EJEMPLOS ---
 - HTML: Define la estructura semántica y el contenido de la página. Ejemplo: Los títulos (<h1>), párrafos (<p>) y tablas (<table>).
 - CSS: Encargado del diseño visual, formato, colores y adaptabilidad mediante Flexbox. Ejemplo: Alinear el encabezado con "display: flex" y "justify-content: space-between".
-- JavaScript: Aporta la interactividad y lógica de comportamiento en el cliente. Ejemplo: Validar los campos de un futuro formulario de reservas antes de enviarlo.
+- JavaScript: Aporta la interactividad y lógica de comportamiento en el cliente. Ejemplo: Validar los campos de un formulario antes de su envío.
 
---- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio v0.1) ---
+--- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio v0.1 / v0.2) ---
 | Archivo de origen | Destino | Ruta escrita en el enlace (href) |
 |-------------------|---------|----------------------------------|
-| index.html | index.html | index.html |
-| index.html | paginas/tarifas.html | paginas/tarifas.html |
-| index.html | paginas/reservas.html | paginas/reservas.html |
-| paginas/tarifas.html | index.html | ../index.html |
+| index1.html | index1.html | index1.html |
+| index1.html | paginas/tarifas.html | paginas/tarifas.html |
+| index1.html | paginas/reservas.html | paginas/reservas.html |
+| paginas/tarifas.html | index1.html | ../index1.html |
 | paginas/tarifas.html | paginas/tarifas.html | tarifas.html |
 | paginas/tarifas.html | paginas/reservas.html | reservas.html |
-| paginas/reservas.html | index.html | ../index.html |
+| paginas/reservas.html | index1.html | ../index1.html |
 | paginas/reservas.html | paginas/tarifas.html | tarifas.html |
 | paginas/reservas.html | paginas/reservas.html | reservas.html |
 
---- 4. COMPROBACIÓN VISUAL Y RESPONSIVA (Semana 2 - Flexbox) ---
-- Encabezado: Organizado con Flexbox horizontalmente en pantallas grandes y adaptado con flex-wrap para evitar desbordamientos en pantallas pequeñas.
-- Pie de página: Distribuido en 3 bloques de fila mediante "flex-direction: row", garantizando una lectura limpia y ordenada.
+--- 4. ESQUEMA DE REGIONES Y JUSTIFICACIÓN DE CONTROLES (MiniReto 5 y 6) ---
+- Esquema de regiones semánticas: Se estructuró el sitio utilizando <header> con <nav> para la barra de navegación, <main> para el contenido envolvente principal, <section> para agrupar bloques temáticos, <article> para elementos independientes como los servicios, <aside> para información complementaria (horarios y qué llevar) y <footer> para el pie de página.
+- Contenedores div restantes: Se conservaron únicamente divs genéricos de diseño estructural en el pie de página donde no existe una etiqueta semántica de contenido equivalente.
+- Elección 1 (Tipo de bicicleta): Se usaron botones de opción (<input type="radio">) porque las alternativas son excluyentes entre sí (el usuario solo puede seleccionar una clase de bicicleta por reserva).
+- Elección 2 (Plan de alquiler): Se utilizó una lista desplegable (<select> / <option>) para optimizar el espacio visual y mostrar múltiples opciones de duración ordenadamente.
+- Elección 3 (Comentarios): Se implementó un área de texto (<textarea>) para permitir la redacción libre de observaciones adicionales con un límite controlado mediante el atributo maxlength.
+
+--- 5. TABLA DE PRUEBAS DE VALIDACIÓN NATIVA (MiniReto 7) ---
+| Campo | Dato de prueba | Resultado esperado | Resultado obtenido |
+|-------|----------------|--------------------|--------------------|
+| Nombre | "Jo" | Rechaza (mín. 3 caracteres) | Error de validación nativo |
+| Documento | "123abc" | Rechaza (solo números) | Error por patrón [0-9] |
+| Documento | "12345678" | Acepta correctamente | Formulario válido en campo |
+| Correo | "correo-sin-arroba" | Rechaza formato inválido | Error de tipo email |
+| Celular | "2001234567" | Rechaza (debe empezar por 3) | Error por patrón 3[0-9]{9} |
+| Celular | "3001234567" | Acepta correctamente | Válido |
+| Fecha | "2026-05-10" | Rechaza (fuera de rango nov-dic) | Error de rango min/max |
+| Cantidad | "7" | Rechaza (máximo 6) | Error por valor máximo |
+
+--- 6. AUDITORÍA DE ACCESIBILIDAD Y CORRECCIONES (MiniReto 8) ---
+1. Hallazgo: Las imágenes requerían descripciones alternativas más precisas. Corrección: Se ajustaron los atributos alt en todas las etiquetas <img> detallando su función visual.
+2. Hallazgo: Ausencia de atributos de accesibilidad en la navegación. Corrección: Se añadió aria-label="Navegación principal" en los elementos <nav>.
+3. Hallazgo: Enlaces externos sin medidas de seguridad. Corrección: Se incorporó rel="noopener" en el enlace de Google Maps.
+4. Hallazgo: Falta de vinculación explícita mediante 'for' en algunas etiquetas del formulario. Corrección: Se enlazaron correctamente todos los <label for="..."> con los id de los inputs.
+5. Hallazgo: El idioma del documento requería refuerzo. Corrección: Se verificó lang="es" en la etiqueta raíz <html> de los tres archivos.
+
+--- 7. EVALUACIÓN DE CONTRASTE Y MAPA DE USO DE COLOR (MiniReto 8) ---
+Paleta evaluada (WebAIM Contrast Checker / DevTools):
+- Blanco sobre Verde Ruta (#1E7A4F): Ratio aprox 4.8:1 -> Apto para texto normal.
+- Blanco sobre Naranja Pedal (#F39A2B): Ratio aprox 2.3:1 -> No apto para texto normal (apto para texto grande).
+- Azul Noche (#14213D) sobre Naranja Pedal (#F39A2B): Ratio aprox 4.6:1 -> Apto para texto normal.
+- Azul Noche (#14213D) sobre Crema (#FAF6EF): Ratio aprox 14.5:1 -> Altamente apto para texto normal.
+- Gris Asfalto (#5B6470) sobre Crema (#FAF6EF): Ratio aprox 6.2:1 -> Apto para texto normal.
+- Verde Ruta (#1E7A4F) sobre Crema (#FAF6EF): Ratio aprox 5.1:1 -> Apto para texto normal.
+- Naranja Pedal (#F39A2B) sobre Crema (#FAF6EF): Ratio aprox 2.1:1 -> No apto.
+- Blanco sobre Azul Noche (#14213D): Ratio aprox 15.2:1 -> Altamente apto para texto normal.
+
+Mapa de uso de color en el diseño:
+- Fondo general de la página: Crema (#FAF6EF)
+- Títulos y encabezados principales: Azul Noche (#14213D)
+- Texto secundario y párrafos: Gris Asfalto (#5B6470)
+- Botones de acción y enlaces: Verde Ruta (#1E7A4F)
+- Destacados secundarios: Naranja Pedal (#F39A2B)
+
+--- 8. PUBLICACIÓN Y COMPROBACIÓN RESPONSIVA (Flexbox) ---
+- Encabezado y Pie de página: Organizados mediante Flexbox (justify-content: space-between, align-items: center y flex-wrap: wrap), evitando desbordamientos en pantallas pequeñas y distribuyendo los bloques de forma óptima en monitores anchos.
+- Enlace público de GitHub Pages (v0.2): https://ronald0226.github.io/rueda-libre-/
