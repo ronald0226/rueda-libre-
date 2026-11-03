@@ -3,8 +3,8 @@ BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v2.0-beta)
 ========================================================================
 
 --- 1. ANÁLISIS DE LA PETICIÓN HTTP (DevTools - Network) ---
-- URL completa: http://127.0.0.1:5500/index1.html
-- Protocolo: HTTP/1.1 | Host: 127.0.0.1 | Puerto: 5500 | Ruta: /index1.html
+- URL completa: http://127.0.0.1:5500/index.html
+- Protocolo: HTTP/1.1 | Host: 127.0.0.1 | Puerto: 5500 | Ruta: /index.html
 - Método: GET | Código de estado: 200 OK (Recurso cargado y servido correctamente por el servidor local).
 - Prueba de ruta inexistente (/promociones.html): Código de estado 404 Not Found (Recurso no encontrado).
 
@@ -16,16 +16,16 @@ BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v2.0-beta)
 --- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio) ---
 | Archivo de origen | Destino | Ruta escrita en el enlace (href) |
 |-------------------|---------|----------------------------------|
-| index1.html | index1.html | index1.html |
-| index1.html | paginas/tarifas.html | paginas/tarifas.html |
-| index1.html | paginas/reservas.html | paginas/reservas.html |
-| paginas/tarifas.html | index1.html | ../index1.html |
+| index.html | index.html | index.html |
+| index.html | paginas/tarifas.html | paginas/tarifas.html |
+| index.html | paginas/reservas.html | paginas/reservas.html |
+| paginas/tarifas.html | index.html | ../index.html |
 | paginas/tarifas.html | paginas/tarifas.html | tarifas.html |
 | paginas/tarifas.html | paginas/reservas.html | reservas.html |
-| paginas/reservas.html | index1.html | ../index1.html |
+| paginas/reservas.html | index.html | ../index.html |
 | paginas/reservas.html | paginas/tarifas.html | tarifas.html |
 | paginas/reservas.html | paginas/reservas.html | reservas.html |
-| pruebas/catalogo-bootstrap.html | index1.html | ../index1.html |
+| pruebas/catalogo-bootstrap.html | index.html | ../index.html |
 
 --- 4. ESQUEMA DE REGIONES Y JUSTIFICACIÓN DE CONTROLES ---
 - Esquema semántico: Uso de <header> con <nav>, <main>, <section>, <article>, <aside> y <footer>. Se conservaron únicamente divs estructurales genéricos en componentes del pie de página sin equivalente semántico.

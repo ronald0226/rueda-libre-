@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alquiler de bicicletas, recorridos guiados y taller básico en Medellín con Rueda Libre.">
+    <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark px-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="bi bi-bicycle me-2" aria-hidden="true"></i>Rueda Libre
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="paginas/tarifas.html">Tarifas y rutas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="paginas/reservas.html">Reservas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+
+        <section class="mb-5">
+            <div id="carruselPromos" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://i.pinimg.com/736x/ff/09/96/ff09969c654fc9e3dc9a58981d79e9dd.jpg" class="d-block w-100" alt="Promoción Martes 2x1 en bicicletas urbanas" style="max-height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                            <h5>Martes 2x1</h5>
+                            <p>Disfruta el doble en nuestras bicicletas urbanas cada martes.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.pinimg.com/1200x/f2/34/66/f234662d15e91299dab11e074abf0330.jpg" class="d-block w-100" alt="Descuento del 20 por ciento en bicicletas eléctricas" style="max-height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                            <h5>20% de Descuento</h5>
+                            <p>Aplica en modelos eléctricos de lunes a jueves.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.pinimg.com/1200x/eb/48/ac/eb48aca21cc771fbaac453217d050129.jpg" class="d-block w-100" alt="Recorrido guiado gratis en tu cumpleaños" style="max-height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                            <h5>¡Feliz Cumpleaños!</h5>
+                            <p>Si cumples años este mes, tu recorrido guiado es totalmente gratis.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselPromos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselPromos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="row align-items-center bg-white p-4 rounded shadow-sm mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-5 fw-bold mb-3">Rueda Libre: Alquiler de Bicicletas</h1>
+                <p class="lead mb-4">Moverte por Medellín sobre dos ruedas nunca fue tan seguro, fácil y accesible.</p>
+                <a href="paginas/reservas.html" class="btn btn-primary btn-lg px-4"><i class="bi bi-calendar-check me-2" aria-hidden="true"></i>Reservar ahora</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzcqe5PZjaliH9VhuU3HWeKCF7AYZ5ig6PbNRP2RFM3F5edi3pO2HxHo_P&s=10" class="img-fluid rounded shadow" alt="Portada Rueda Libre">
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Nuestra flota</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/736x/ff/09/96/ff09969c654fc9e3dc9a58981d79e9dd.jpg" class="card-img-top" alt="Urbana Clásica">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Urbana Clásica</h3>
+                            <p class="card-text">Cómoda y liviana para las ciclorrutas de la ciudad.</p>
+                            <p class="fw-bold text-success mt-auto">$10.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/1200x/f9/52/b8/f952b850be2dd6cfb620516e42d2e71f.jpg" class="card-img-top" alt="Urbana Plegable">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Urbana Plegable</h3>
+                            <p class="card-text">Se dobla en segundos; ideal para combinar con el metro.</p>
+                            <p class="fw-bold text-success mt-auto">$12.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/1200x/eb/48/ac/eb48aca21cc771fbaac453217d050129.jpg" class="card-img-top" alt="Montaña Trail">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Montaña Trail</h3>
+                            <p class="card-text">Suspensión delantera y 21 cambios para las subidas.</p>
+                            <p class="fw-bold text-success mt-auto">$15.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/1200x/ed/0f/10/ed0f10fa588938fe19a8b8f8cbe4b05a.jpg" class="card-img-top" alt="Gravel Aventura">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Gravel Aventura</h3>
+                            <p class="card-text">Para rutas mixtas de asfalto y terreno destapado.</p>
+                            <p class="fw-bold text-success mt-auto">$18.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm position-relative">
+                        <span class="position-absolute top-0 end-0 badge bg-warning text-dark m-2">Nuevo</span>
+                        <img src="https://i.pinimg.com/1200x/f2/34/66/f234662d15e91299dab11e074abf0330.jpg" class="card-img-top" alt="Eléctrica Urbana">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Eléctrica Urbana</h3>
+                            <p class="card-text">Asistencia eléctrica con 45 km de autonomía.</p>
+                            <p class="fw-bold text-success mt-auto">$25.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/1200x/10/95/3e/10953e80cb258d0870a342142b9488fb.jpg" class="card-img-top" alt="Infantil">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Infantil</h3>
+                            <p class="card-text">Diseñada especialmente para niños de 6 a 10 años.</p>
+                            <p class="fw-bold text-success mt-auto">$8.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://i.pinimg.com/1200x/7f/20/9a/7f209a5b8b6e74256d559c0b4a7049fe.jpg" class="card-img-top" alt="Tándem">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Tándem</h3>
+                            <p class="card-text">Para dos personas; perfecta para pasear en pareja.</p>
+                            <p class="fw-bold text-success mt-auto">$20.000 / hora</p>
+                            <a href="paginas/reservas.html" class="btn btn-primary mt-2">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Rutas Guiadas -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Nuestras rutas guiadas</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm p-3">
+                        <h3 class="h5">Río y Parques</h3>
+                        <p class="mb-0 text-muted">Nivel: Fácil</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm p-3">
+                        <h3 class="h5">Sabores de Barrio</h3>
+                        <p class="mb-0 text-muted">Nivel: Medio</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm p-3">
+                        <h3 class="h5">Reto Las Palmas</h3>
+                        <p class="mb-0 text-muted">Nivel: Difícil</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/573000000000" class="whatsapp-flotante" target="_blank" rel="noopener">
+        <i class="bi bi-whatsapp fs-5" aria-hidden="true"></i>WhatsApp
+    </a>
+
+    <footer class="p-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+            <div class="footer-block">
+                <h3>Rueda Libre</h3>
+                <p class="mb-0">Alquiler de bicicletas y recorridos.</p>
+            </div>
+            <div class="footer-block">
+                <h3>Contacto</h3>
+                <p class="mb-0"><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>
+            </div>
+            <div class="footer-block">
+                <h3>Horario</h3>
+                <p class="mb-0">&copy; 2026 Rueda Libre. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
