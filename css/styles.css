@@ -1,3 +1,21 @@
+/* ==========================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL (MÓVILES)
+   ========================================== */
+:root {
+  --verde-ruta: #1E7A4F;
+  --naranja-pedal: #F39A2B;
+  --azul-noche: #14213D;
+  --crema: #FAF6EF;
+  --gris-asfalto: #5B6470;
+
+  --fuente-titulos: 'Montserrat', sans-serif;
+  --fuente-texto: 'Open Sans', sans-serif;
+
+  --espacio-sm: 0.5rem;
+  --espacio-md: 1rem;
+  --espacio-lg: 2rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,146 +23,221 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  color: #333;
-  background-color: #f4f6f7;
+  font-family: var(--fuente-texto);
+  color: var(--gris-asfalto);
+  background-color: var(--crema);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-ul, ol {
-  list-style-position: inside;
-  margin-bottom: 1rem;
-}
-
-a {
-  color: #2980b9;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #2c3e50;
-  color: white;
-}
-
-header .logo {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-header nav ul {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-}
-
-header nav ul li a {
-  color: white;
-  padding: 0.5rem 0.8rem;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-
-header nav ul li a:hover {
-  background-color: #34495e;
-  text-decoration: none;
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.seccion-contenido {
-  background: white;
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
 }
 
 img {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+}
+
+/* ==========================================
+   2. ENCABEZADO Y NAVEGACIÓN (MOBILE-FIRST)
+   ========================================== */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--espacio-md);
+  background-color: var(--azul-noche);
+  color: #FFFFFF;
+  gap: var(--espacio-sm);
+}
+
+header .logo {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--espacio-md);
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+#menu a {
+  color: var(--crema);
+  text-decoration: none;
+  padding: var(--espacio-sm);
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#menu a:hover,
+#menu a:focus {
+  background-color: var(--naranja-pedal);
+  color: var(--azul-noche);
+  outline: 2px solid var(--naranja-pedal);
+}
+
+#menu a.activo {
+  color: var(--naranja-pedal);
+  font-weight: 600;
+  border-bottom: 2px solid var(--naranja-pedal);
+}
+
+/* ==========================================
+   3. CONTENIDO PRINCIPAL Y SECCIONES
+   ========================================== */
+main {
+  flex: 1;
+  padding: var(--espacio-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-inicio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-lg);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--azul-noche);
+  margin-bottom: var(--espacio-md);
+}
+
+p {
+  margin-bottom: var(--espacio-md);
+  line-height: 1.6;
+}
+
+.seccion-contenido {
+  background: #FFFFFF;
+  padding: var(--espacio-md);
+  margin-bottom: var(--espacio-md);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ==========================================
+   4. CUADRÍCULA DE LA FLOTA (CSS GRID + FLEXBOX)
+   ========================================== */
+.grid-flota {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
+}
+
+.tarjeta-flota {
+  background: #FFFFFF;
+  padding: var(--espacio-md);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tarjeta-flota img {
+  width: 100%;
+  margin-bottom: var(--espacio-sm);
+}
+
+.precio-flota {
+  font-weight: bold;
+  color: var(--verde-ruta);
+  margin: var(--espacio-sm) 0;
+}
+
+/* ==========================================
+   5. GALERÍA DE RUTAS GUIADAS
+   ========================================== */
+.galeria-rutas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
+}
+
+.tarjeta-ruta {
+  background: #FFFFFF;
+  padding: var(--espacio-md);
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* ==========================================
+   6. TABLAS ADAPTABLES EN MÓVIL
+   ========================================== */
+.tabla-contenedor {
+  overflow-x: auto;
+  margin-bottom: var(--espacio-md);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  min-width: 450px;
 }
 
 caption {
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--espacio-sm);
   text-align: left;
-  color: #34495e;
+  color: var(--azul-noche);
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 0.75rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
   text-align: left;
 }
 
 th {
-  background-color: #2980b9;
-  color: white;
+  background-color: var(--verde-ruta);
+  color: #FFFFFF;
 }
 
+/* ==========================================
+   7. FORMULARIO Y FILA DE CAMPOS CORTOS
+   ========================================== */
 fieldset {
   border: 1px solid #ccc;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: var(--espacio-md);
+  margin-bottom: var(--espacio-md);
   border-radius: 6px;
-  background: white;
+  background: #FFFFFF;
 }
 
 legend {
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--azul-noche);
   padding: 0 0.5rem;
+  font-family: var(--fuente-titulos);
 }
 
-form div {
-  margin-bottom: 1rem;
+.form-grupo {
+  margin-bottom: var(--espacio-md);
+}
+
+.form-fila-dos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
 }
 
 label {
   display: block;
   margin-bottom: 0.3rem;
   font-weight: 600;
+  color: var(--azul-noche);
 }
 
 input[type="text"],
@@ -155,10 +248,11 @@ input[type="number"],
 select,
 textarea {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: inherit;
+  font-size: 1rem;
 }
 
 input[type="radio"],
@@ -169,44 +263,109 @@ input[type="checkbox"] {
 
 .btn-reservar {
   display: inline-block;
-  background-color: #27ae60;
-  color: white;
-  padding: 0.6rem 1.2rem;
+  background-color: var(--verde-ruta);
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  margin-top: 1rem;
+  font-family: var(--fuente-titulos);
+  text-align: center;
 }
 
-.btn-reservar:hover {
-  background-color: #219653;
+/* ==========================================
+   8. PIE DE PÁGINA Y COMPONENTES FIJOS
+   ========================================== */
+.whatsapp-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: #FFFFFF;
+  padding: 0.75rem 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
   text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
 footer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #1a252f;
-  color: white;
-  padding: 2rem;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: var(--azul-noche);
+  color: #FFFFFF;
+  padding: var(--espacio-lg);
+  gap: var(--espacio-md);
+  margin-top: auto;
 }
 
 footer .footer-block {
-  flex: 1;
-  min-width: 200px;
+  width: 100%;
 }
 
 footer h3 {
-  color: #1abc9c;
+  color: var(--naranja-pedal);
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--espacio-sm);
 }
 
 footer a {
-  color: #1abc9c;
+  color: var(--naranja-pedal);
+  text-decoration: none;
+}
+
+/* ==========================================
+   9. MEDIA QUERIES (TABLET Y ESCRITORIO)
+   ========================================== */
+
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--espacio-md) var(--espacio-lg);
+  }
+
+  .form-fila-dos {
+    flex-direction: row;
+  }
+  .form-fila-dos > div {
+    flex: 1;
+  }
+
+  .galeria-rutas {
+    flex-direction: row;
+  }
+  .tarjeta-ruta {
+    flex: 1;
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  footer .footer-block {
+    flex: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    padding: var(--espacio-lg);
+  }
+
+  .portada-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espacio-lg);
+    align-items: center;
+  }
+
+  .layout-reservas {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--espacio-lg);
+    align-items: start;
+  }
 }

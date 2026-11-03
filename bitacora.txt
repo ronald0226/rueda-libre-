@@ -1,26 +1,19 @@
-==================================================
-BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v0.2)
-==================================================
+========================================================================
+BITÁCORA DE DESARROLLO - PROYECTO: RUEDA LIBRE (v2.0-beta)
+========================================================================
 
 --- 1. ANÁLISIS DE LA PETICIÓN HTTP (DevTools - Network) ---
-Al cargar la página de inicio en entorno local mediante Live Server:
 - URL completa: http://127.0.0.1:5500/index1.html
-- Protocolo: HTTP/1.1
-- Host: 127.0.0.1
-- Puerto: 5500
-- Ruta: /index1.html
-- Método de la petición: GET
-- Código de estado: 200 OK (Indica que el servidor encontró y sirvió el recurso exitosamente).
+- Protocolo: HTTP/1.1 | Host: 127.0.0.1 | Puerto: 5500 | Ruta: /index1.html
+- Método: GET | Código de estado: 200 OK (Recurso cargado y servido correctamente por el servidor local).
+- Prueba de ruta inexistente (/promociones.html): Código de estado 404 Not Found (Recurso no encontrado).
 
-Prueba de ruta inexistente (/promociones.html):
-- Código de estado: 404 Not Found (Indica que el servidor no encontró el recurso solicitado en la ruta especificada).
+--- 2. ROLES DE LAS TECNOLOGÍAS WEB ---
+- HTML: Define la estructura semántica y el contenido general de la página (títulos, párrafos, tablas, formularios).
+- CSS: Encargado de la presentación visual, diseño, paleta de colores, tipografías y maquetación avanzada con Flexbox, Grid y Bootstrap 5.3.
+- JavaScript: Aporta interactividad y validaciones dinámicas del lado del cliente.
 
---- 2. ROLES DE LAS TECNOLOGÍAS WEB CON EJEMPLOS ---
-- HTML: Define la estructura semántica y el contenido de la página. Ejemplo: Los títulos (<h1>), párrafos (<p>) y tablas (<table>).
-- CSS: Encargado del diseño visual, formato, colores y adaptabilidad mediante Flexbox. Ejemplo: Alinear el encabezado con "display: flex" y "justify-content: space-between".
-- JavaScript: Aporta la interactividad y lógica de comportamiento en el cliente. Ejemplo: Validar los campos de un formulario antes de su envío.
-
---- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio v0.1 / v0.2) ---
+--- 3. TABLA DE RUTAS RELATIVAS (Navegación del Sitio) ---
 | Archivo de origen | Destino | Ruta escrita en el enlace (href) |
 |-------------------|---------|----------------------------------|
 | index1.html | index1.html | index1.html |
@@ -32,51 +25,106 @@ Prueba de ruta inexistente (/promociones.html):
 | paginas/reservas.html | index1.html | ../index1.html |
 | paginas/reservas.html | paginas/tarifas.html | tarifas.html |
 | paginas/reservas.html | paginas/reservas.html | reservas.html |
+| pruebas/catalogo-bootstrap.html | index1.html | ../index1.html |
 
---- 4. ESQUEMA DE REGIONES Y JUSTIFICACIÓN DE CONTROLES (MiniReto 5 y 6) ---
-- Esquema de regiones semánticas: Se estructuró el sitio utilizando <header> con <nav> para la barra de navegación, <main> para el contenido envolvente principal, <section> para agrupar bloques temáticos, <article> para elementos independientes como los servicios, <aside> para información complementaria (horarios y qué llevar) y <footer> para el pie de página.
-- Contenedores div restantes: Se conservaron únicamente divs genéricos de diseño estructural en el pie de página donde no existe una etiqueta semántica de contenido equivalente.
-- Elección 1 (Tipo de bicicleta): Se usaron botones de opción (<input type="radio">) porque las alternativas son excluyentes entre sí (el usuario solo puede seleccionar una clase de bicicleta por reserva).
-- Elección 2 (Plan de alquiler): Se utilizó una lista desplegable (<select> / <option>) para optimizar el espacio visual y mostrar múltiples opciones de duración ordenadamente.
-- Elección 3 (Comentarios): Se implementó un área de texto (<textarea>) para permitir la redacción libre de observaciones adicionales con un límite controlado mediante el atributo maxlength.
+--- 4. ESQUEMA DE REGIONES Y JUSTIFICACIÓN DE CONTROLES ---
+- Esquema semántico: Uso de <header> con <nav>, <main>, <section>, <article>, <aside> y <footer>. Se conservaron únicamente divs estructurales genéricos en componentes del pie de página sin equivalente semántico.
+- Elección 1 (Tipo de bicicleta): Botones de opción (<input type="radio">) por ser alternativas excluyentes.
+- Elección 2 (Plan de alquiler): Lista desplegable (<select>) para optimizar el espacio visual con múltiples duraciones.
+- Elección 3 (Comentarios): Área de texto (<textarea>) para permitir observaciones multilinea con control mediante maxlength.
 
---- 5. TABLA DE PRUEBAS DE VALIDACIÓN NATIVA (MiniReto 7) ---
+--- 5. TABLA DE PRUEBAS DE VALIDACIÓN NATIVA ---
 | Campo | Dato de prueba | Resultado esperado | Resultado obtenido |
 |-------|----------------|--------------------|--------------------|
 | Nombre | "Jo" | Rechaza (mín. 3 caracteres) | Error de validación nativo |
 | Documento | "123abc" | Rechaza (solo números) | Error por patrón [0-9] |
-| Documento | "12345678" | Acepta correctamente | Formulario válido en campo |
+| Documento | "12345678" | Acepta correctamente | Válido en campo |
 | Correo | "correo-sin-arroba" | Rechaza formato inválido | Error de tipo email |
 | Celular | "2001234567" | Rechaza (debe empezar por 3) | Error por patrón 3[0-9]{9} |
 | Celular | "3001234567" | Acepta correctamente | Válido |
 | Fecha | "2026-05-10" | Rechaza (fuera de rango nov-dic) | Error de rango min/max |
 | Cantidad | "7" | Rechaza (máximo 6) | Error por valor máximo |
 
---- 6. AUDITORÍA DE ACCESIBILIDAD Y CORRECCIONES (MiniReto 8) ---
-1. Hallazgo: Las imágenes requerían descripciones alternativas más precisas. Corrección: Se ajustaron los atributos alt en todas las etiquetas <img> detallando su función visual.
-2. Hallazgo: Ausencia de atributos de accesibilidad en la navegación. Corrección: Se añadió aria-label="Navegación principal" en los elementos <nav>.
-3. Hallazgo: Enlaces externos sin medidas de seguridad. Corrección: Se incorporó rel="noopener" en el enlace de Google Maps.
-4. Hallazgo: Falta de vinculación explícita mediante 'for' en algunas etiquetas del formulario. Corrección: Se enlazaron correctamente todos los <label for="..."> con los id de los inputs.
-5. Hallazgo: El idioma del documento requería refuerzo. Corrección: Se verificó lang="es" en la etiqueta raíz <html> de los tres archivos.
+--- 6. AUDITORÍA DE ACCESIBILIDAD Y CORRECCIONES ---
+1. Atributos alt descriptivos añadidos en todas las etiquetas <img>.
+2. Atributos aria-label="Navegación principal" incorporados en las etiquetas <nav>.
+3. Enlaces externos protegidos con rel="noopener".
+4. Etiquetas <label for="..."> vinculadas explícitamente a los IDs de cada control de formulario.
+5. Atributo lang="es" verificado en la estructura raíz de los documentos HTML.
 
---- 7. EVALUACIÓN DE CONTRASTE Y MAPA DE USO DE COLOR (MiniReto 8) ---
-Paleta evaluada (WebAIM Contrast Checker / DevTools):
-- Blanco sobre Verde Ruta (#1E7A4F): Ratio aprox 4.8:1 -> Apto para texto normal.
-- Blanco sobre Naranja Pedal (#F39A2B): Ratio aprox 2.3:1 -> No apto para texto normal (apto para texto grande).
-- Azul Noche (#14213D) sobre Naranja Pedal (#F39A2B): Ratio aprox 4.6:1 -> Apto para texto normal.
-- Azul Noche (#14213D) sobre Crema (#FAF6EF): Ratio aprox 14.5:1 -> Altamente apto para texto normal.
-- Gris Asfalto (#5B6470) sobre Crema (#FAF6EF): Ratio aprox 6.2:1 -> Apto para texto normal.
-- Verde Ruta (#1E7A4F) sobre Crema (#FAF6EF): Ratio aprox 5.1:1 -> Apto para texto normal.
-- Naranja Pedal (#F39A2B) sobre Crema (#FAF6EF): Ratio aprox 2.1:1 -> No apto.
-- Blanco sobre Azul Noche (#14213D): Ratio aprox 15.2:1 -> Altamente apto para texto normal.
+--- 7. EVALUACIÓN DE CONTRASTE Y MAPA DE USO DE COLOR ---
+Paleta evaluada (WebAIM Contrast Checker):
+- Blanco sobre Verde Ruta (#1E7A4F): ~4.8:1 -> Apto para texto normal.
+- Blanco sobre Naranja Pedal (#F39A2B): ~2.3:1 -> Apto solo para texto grande.
+- Azul Noche (#14213D) sobre Naranja Pedal (#F39A2B): ~4.6:1 -> Apto para texto normal.
+- Azul Noche (#14213D) sobre Crema (#FAF6EF): ~14.5:1 -> Altamente apto.
+- Gris Asfalto (#5B6470) sobre Crema (#FAF6EF): ~6.2:1 -> Apto para texto normal.
+- Verde Ruta (#1E7A4F) sobre Crema (#FAF6EF): ~5.1:1 -> Apto para texto normal.
+- Blanco sobre Azul Noche (#14213D): ~15.2:1 -> Altamente apto.
 
-Mapa de uso de color en el diseño:
-- Fondo general de la página: Crema (#FAF6EF)
-- Títulos y encabezados principales: Azul Noche (#14213D)
+Mapa de uso en CSS (Variables :root):
+- Fondo general: Crema (#FAF6EF)
+- Títulos y encabezados: Azul Noche (#14213D)
 - Texto secundario y párrafos: Gris Asfalto (#5B6470)
-- Botones de acción y enlaces: Verde Ruta (#1E7A4F)
-- Destacados secundarios: Naranja Pedal (#F39A2B)
+- Botones y enlaces principales: Verde Ruta (#1E7A4F)
+- Destacados y avisos: Naranja Pedal (#F39A2B)
 
---- 8. PUBLICACIÓN Y COMPROBACIÓN RESPONSIVA (Flexbox) ---
-- Encabezado y Pie de página: Organizados mediante Flexbox (justify-content: space-between, align-items: center y flex-wrap: wrap), evitando desbordamientos en pantallas pequeñas y distribuyendo los bloques de forma óptima en monitores anchos.
-- Enlace público de GitHub Pages (v0.2): https://ronald0226.github.io/rueda-libre-/
+--- 8. COMPROBACIÓN DE HERENCIA Y DEVTOOLS ---
+- Propiedad heredada comprobada (Styles / Computed): 'color' y 'font-family' se transmiten correctamente desde el elemento padre <body> hacia los elementos hijos (<p> y textos generales).
+- Propiedad no heredada comprobada: 'background-color' y 'border' no se heredan automáticamente por los elementos hijos.
+
+--- 9. ANÁLISIS DE ESPECIFICIDAD Y CONFLICTO DE CLASES ---
+- Conflicto detectado: La regla de id (#menu a con especificidad 0,1,1) anulaba visualmente los estilos de la clase aislada (.activo con especificidad 0,1,0).
+- Solución aplicada: Se unificaron los selectores de manera específica (#menu a.activo) para elevar la prioridad de la regla sin utilizar la directiva !important.
+
+--- 10. MEDICIÓN DEL MODELO DE CAJA ---
+- Comprobación con box-sizing: border-box aplicado de forma universal en las tarjetas de servicio y contenedores principales.
+- Medición en DevTools (Computed):
+  * Antes (content-box por defecto): El ancho total de las tarjetas sumaba el contenido más el relleno (padding) y los bordes, desbordando los límites del contenedor principal.
+  * Después (border-box): El ancho total se ajustó de forma exacta y controlada respetando la escala de espaciados en rem.
+
+--- 11. COMPORTAMIENTO DEL ENCABEZADO Y PIE DE PÁGINA ---
+- Al estrechar la ventana del navegador de escritorio a móvil:
+  * Encabezado: Pasa de una distribución horizontal (logo a la izquierda, menú a la derecha con flex-direction: row) a una columna centrada verticalmente donde el logo queda arriba y el menú debajo.
+  * Pie de página: Los bloques en fila (marca, contacto y horario) se apilan en columnas individuales en pantallas estrechas gracias al comportamiento mobile-first, recuperando la fila con flex-direction: row a partir de 768px.
+
+--- 12. COLUMNAS DE LA FLOTA POR ANCHO ---
+- Mediciones observadas con el modo dispositivo de DevTools utilizando CSS Grid (auto-fit y minmax de 260px):
+  * A 1280 px (Escritorio): Se despliegan 4 columnas de tarjetas de manera fluida.
+  * A 900 px (Tablet): Se despliegan 3 columnas automáticas.
+  * A 500 px (Móvil): Se reduce a 1 sola columna adaptada al ancho completo sin desbordes.
+
+--- 13. DECISIONES DE DISEÑO: FLEXBOX VS GRID ---
+- Portada de inicio: Se usó Grid (2 columnas fr) porque distribuye dimensiones exactas en un plano bidimensional.
+- Galería de rutas guiadas: Se usó Flexbox en fila para alinear las tres tarjetas de forma flexible en pantallas grandes.
+- Layout de Reservas: Se empleó Grid en proporción 2:1 para ubicar el formulario principal y la barra lateral de contacto.
+- Fila del formulario (Documento y Celular): Se usó Flexbox para agrupar campos cortos relacionados de manera fluida.
+- Encabezado y Pie de página: Se usó Flexbox por tratarse de alineaciones lineales en una sola dimensión.
+
+--- 14. PROBLEMAS RESPONSIVE RESUELTOS ---
+1. Desborde horizontal en móviles: Solucionado aplicando max-width: 100% y evitando anchos fijos en píxeles.
+2. Tablas de tarifas anchas en celular: Se añadió un contenedor envolvente con scroll horizontal (`overflow-x: auto`) para asegurar la lectura sin romper la estructura de la página.
+3. Apilamiento incorrecto del menú: Se reestructuró con enfoque mobile-first, permitiendo que los elementos salten a otra línea de manera limpia mediante `flex-wrap`.
+
+--- 15. CONSULTA DE CLASES UTILITARIAS EN BOOTSTRAP 5.3 (MiniReto 6) ---
+1. `container`: Define un contenedor responsivo con un ancho máximo adaptado a cada breakpoint.
+2. `row`: Crea una fila horizontal para agrupar columnas de la grilla y alinear gutters de manera uniforme.
+3. `text-center`: Centra horizontalmente el texto dentro de un elemento contenedor.
+4. `d-none d-md-block`: Oculta el elemento en dispositivos móviles y lo muestra como bloque a partir del breakpoint 'md'.
+5. `fw-bold`: Establece el grosor de la fuente en negrita (font-weight: bold).
+
+--- 16. CONFLICTOS DE CASCADA Y ESTILOS TRAS INTEGRAR BOOTSTRAP (MiniReto 7) ---
+1. Conflicto de tipografía y color en enlaces: Las reglas globales predeterminadas de Bootstrap sobreescribían los colores de los hipervínculos del menú principal. Solución: Cargar la hoja de estilos propia después de Bootstrap y ajustar la especificidad de los selectores.
+2. Conflicto en los márgenes de los encabezados (h1, h2, h3): Las clases nativas de Bootstrap aplicaban márgenes inferiores distintos a los definidos en el diseño corporativo. Solución: Ajustar las variables de espaciado y redefinir los márgenes en los selectores globales de títulos.
+3. Conflicto en la visualización de formularios: Los estilos de los inputs en Bootstrap alteraban el comportamiento de los bordes personalizados. Solución: Mantener la estructura de clases nativas de Bootstrap para controles junto con los atributos de validación existentes.
+
+--- 17. COMPARATIVA FINAL: CSS PROPIO VS BOOTSTRAP 5.3 (MiniReto 8) ---
+- Tiempo invertido:
+  * Versión en CSS propio (v1.5): ~6 horas de desarrollo distribuidas en maquetación, media queries y ajustes de diseño.
+  * Versión migrada a Bootstrap 5.3 (v2.0-beta): ~2.5 horas de desarrollo gracias a la reutilización de componentes de grilla y clases utilitarias ya probadas.
+- Reducción de código (Líneas de styles.css):
+  * Líneas antes de la migración (v1.5): ~280 líneas de código (incluyendo reglas de distribución y media queries manuales).
+  * Líneas después de la limpieza (v2.0-beta): ~95 líneas de código (reducido exclusivamente a variables de identidad visual, ajustes de tarjetas y personalización de tablas).
+- Ventajas observadas: Menor cantidad de código repetitivo, desarrollo acelerado de layouts responsivos complejos y consistencia automática en los breakpoints de pantalla.
+- Desventajas observadas: Dependencia de un framework externo y mayor volumen de clases en el marcado HTML.
+- Conclusión: La migración a Bootstrap demostró ser altamente eficiente para agilizar el desarrollo y reducir el mantenimiento del código CSS, conservando intacta la identidad visual y las reglas de validación de Rueda Libre.
